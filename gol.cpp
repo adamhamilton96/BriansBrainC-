@@ -9,7 +9,7 @@ void draw();
 void calculate();
 void createGrid();
 
-const int gridSize = 60;
+const int gridSize = 70;
 int grid[gridSize][gridSize];
 int nextGrid[gridSize][gridSize];
 int chance = 85;
@@ -19,7 +19,7 @@ int main() {
     createGrid();
     while (true) {
         draw();
-        std::this_thread::sleep_for (std::chrono::milliseconds(750));
+        std::this_thread::sleep_for (std::chrono::milliseconds(500));
         system("clear");
         for(int i = 0; i < speed; i++) {
             calculate();
@@ -69,9 +69,9 @@ void draw() {
     for(int i = 0; i < gridSize; i++) {
         for(int j = 0; j < gridSize; j++) {
             if(grid[i][j] == 0) {
-                cout << "\033[40m \033[0m";
+                cout << "\033[40m  \033[0m";
             } else if(grid[i][j] == 1) {
-                cout << "\033[47m \033[0m";
+                cout << "\033[47m  \033[0m";
             }
         }
         cout << endl;
