@@ -19,7 +19,7 @@ int main() {
     createGrid();
     while (true) {
         draw();
-        std::this_thread::sleep_for (std::chrono::milliseconds(500));
+        std::this_thread::sleep_for (std::chrono::milliseconds(50));
         system("clear");
         for(int i = 0; i < speed; i++) {
             calculate();
