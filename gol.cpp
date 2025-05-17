@@ -9,9 +9,10 @@ void draw();
 void calculate();
 void createGrid();
 
-const int gridSize = 70;
-int grid[gridSize][gridSize];
-int nextGrid[gridSize][gridSize];
+const int gridWidth = 140;
+const int gridHeight = 70;
+int grid[gridHeight][gridWidth];
+int nextGrid[gridHeight][gridWidth];
 int chance = 85;
 int speed = 1;
 
@@ -31,8 +32,8 @@ int main() {
 
 void calculate() {
     int neighbours;
-    for(int i = 0; i < gridSize; i++) {
-        for(int j = 0; j < gridSize; j++) {
+    for(int i = 0; i < gridHeight; i++) {
+        for(int j = 0; j < gridWidth; j++) {
             neighbours = 0;
             if (grid[i-1][j+1] == 1) neighbours++;
                 if (grid[i][j+1] == 1) neighbours++;
@@ -52,22 +53,22 @@ void calculate() {
                 }
         }
     }
-    for (int i = 0; i < gridSize; i++) {
-        for (int j = 0; j < gridSize; j++) {
+    for (int i = 0; i < gridHeight; i++) {
+        for (int j = 0; j < gridWidth; j++) {
             grid[i][j] = nextGrid[i][j];
         }
     }
         
-   for (int i = 0; i < gridSize; i++) {
-        for (int j = 0; j < gridSize; j++) {
+   for (int i = 0; i < gridHeight; i++) {
+        for (int j = 0; j < gridWidth; j++) {
             nextGrid[i][j] = 0;
         }
     }
 }
 
 void draw() {
-    for(int i = 0; i < gridSize; i++) {
-        for(int j = 0; j < gridSize; j++) {
+    for(int i = 0; i < gridHeight; i++) {
+        for(int j = 0; j < gridWidth; j++) {
             if(grid[i][j] == 0) {
                 cout << "\033[40m  \033[0m";
             } else if(grid[i][j] == 1) {
@@ -80,8 +81,8 @@ void draw() {
 
 void createGrid() {
     srand (time(NULL));
-    for (int i = 0; i < gridSize; i++) {
-        for (int j = 0; j < gridSize; j++) {
+    for (int i = 0; i < gridHeight; i++) {
+        for (int j = 0; j < gridWidth; j++) {
             if (rand() % 100 > chance) grid[i][j] = 1;
             else grid[i][j] = 0;
         }
